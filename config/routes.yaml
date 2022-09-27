@@ -1,0 +1,50 @@
+user_signup:
+    path: /user/signup
+    controller: App\Controller\UserController::signup
+    methods:    POST
+user_login:
+    path: /user/login
+    controller: App\Controller\UserController::login
+    methods:    POST
+product_list:
+    path: /product
+    controller: App\Controller\ProductController::index
+    methods:    GET
+product:
+    path: /product/{product}
+    controller: App\Controller\ProductController::showProduct
+    methods:    GET
+api_login_check:
+    path: /api/login_check
+    methods:    POST
+add_cart:
+    path: /incart/add
+    controller: App\Controller\OrderController::addOrder
+    methods:    POST
+in_cart:
+    path: /incart
+    controller: App\Controller\OrderController::inCart
+    methods:    GET
+remove_cart:
+    path: /incart/remove
+    controller: App\Controller\OrderController::removeOrder
+    methods:    POST
+checkout:
+    path: /incart/checkout
+    controller: App\Controller\OrderController::checkOut
+    methods:    POST
+app_bill:
+    path: /billlist
+    controller: App\Controller\BillController::listOrder
+    methods:    GET
+app_pdf:
+    path: /billlist/showpdf/{order}
+    controller: App\Controller\BillController::showPdf
+    methods:    GET
+app_pdftest:
+    path: /billlist/testpdf/{orderId}
+    controller: App\Controller\BillController::testPdf
+    methods:    GET
+gesdinet_jwt_refresh_token:
+    path: /api/token/refresh
+    controller: gesdinet.jwtrefreshtoken::refresh

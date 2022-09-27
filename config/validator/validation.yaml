@@ -1,0 +1,43 @@
+# config/validator/validation.yaml
+App\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: username
+            message: 'This username is exist!!'
+    properties:
+        email:
+            - NotBlank: 
+                message: The email is empty.
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+            
+        displayName:
+            - NotBlank: 
+                message: The display_name is empty.
+        username:
+            - NotBlank:
+                message: The username is empty. 
+        password:
+            - NotBlank: 
+                message: The password is empty. 
+            - Length:
+                min: 5
+                minMessage: 'Your password must be at least 5 characters long'
+App\Entity\OrderProductTemp:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: [userId,productId]
+            message: 'Duplicate Data!!'
+    properties:
+        productId:
+            - NotBlank: 
+                message: The product_id is empty.
+            - GreaterThan: 
+                value: 0
+                message: The product_id is not Negative Or Zero.
+        quantity:
+            - NotBlank: 
+                message: The quantity is empty.
+            - GreaterThan: 
+                value: 0
+                message: The quantity is not Negative Or Zero.        
